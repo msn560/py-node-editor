@@ -37,6 +37,8 @@ Kurulum için gereken bağımlılıklar ```document/pip/install.txt``` dosyasın
 ## Thanks :
  
  [Pavel Křupala](https://gitlab.com/pavel.krupala/pyqt-node-editor)
+ [Node Editor in Python Tutorial Series](https://www.youtube.com/watch?v=xbTLhMJARrk&list=PLZSNHzwDCOggHLThIbCxUhWTgrKVemZkz)
+ 
  
 ## License
 
