@@ -28,7 +28,69 @@ HTTP Server Node sayesinde, uygulama içerisindeki verileri yerel sunucu üzerin
  # Prototip ve Geliştirme:
 Hızlı prototipleme ve görsel programlama deneyimi için tasarlanmış olan bu yapı, kullanıcı dostu arayüzü ve modüler mimarisi sayesinde genişletilebilir.
 
- 
+```python
+import os
+from qtpy.QtWidgets import QLineEdit 
+from qtpy.QtCore import Qt 
+from nodeeditor.utils import dumpException    #debug
+from src.node_editor.collector import register_node # otomatik toplayıcı fonksiyon
+from src.node_editor.node import Node
+from src.node_editor.content import Content
+from src.node_editor.graphics import Graphics
+from src.node_editor.constants import NODE_INPUT  # düğüm için benzersiz tanımlayıcı
+
+class lineTextContent(Content): # düğümün görsel arayüzü
+    def initUI(self):
+        super().initUI()   
+        self.edit = QLineEdit("", self)
+        self.edit.setAlignment(Qt.AlignLeft) 
+        self.edit.setObjectName(self.node.content_label_objname) 
+        self.layout.addWidget(self.edit)
+
+        self.setLayout(self.layout)
+
+    def serialize(self): # düğüm verilerini kson dosyasına işle
+        res = super().serialize()
+        res['value'] = self.edit.text()
+        return res
+
+    def deserialize(self, data, hashmap={}): # geri yükleme
+        res = super().deserialize(data, hashmap)
+        try:
+            value = data['value']
+            self.edit.setText(value)
+            return True & res
+        except Exception as e:
+            dumpException(e)
+        return res
+
+@register_node(NODE_INPUT) 
+class InputNode(Node): # src/node_editor/node.py Node sınıfından türeyen Düğümler
+    width = 400
+    height = 80 
+    op_code = NODE_INPUT   # src/node_editor/constants.py den gelen benzersiz tanımlayıcı
+    op_title = "Yazı"
+    content_label_objname = "line_text"
+    category = os.path.basename(os.path.dirname(os.path.abspath(__file__))) # kategorize etmek için bulunulan dosya adını kullan
+    def __init__(self, scene,parent=None ): 
+        super().__init__(scene)  
+        self.addInput("Giriş"  )  #  giriş soketleri
+        self.addOutput("Çıkış")  # çıkış soketleri
+        self.create() 
+         
+
+    def initInnerClasses(self):
+        self.content = lineTextContent(self)
+        self.grNode = Graphics(self)
+        self.content.edit.textChanged.connect(self.onInputTextChanged) 
+
+    def evalImplementation(self, name=None, data=None): # gelen verileri giriş değerine göre işleme 
+        self.content.edit.setText(str(data)) 
+
+    def onInputTextChanged(self ):
+        text = self.content.edit.text()   
+        self.sendData("Çıkış",text) #verileri sonraki bağlı node gönder
+ ```
 
 # Diğer bağımlılıklar:
 nodeeditor, ilgili içerik ve grafik sınıfları 
