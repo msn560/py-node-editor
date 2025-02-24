@@ -1,7 +1,7 @@
 # py-node-editor
 Bu proje, PyQt tabanlı esnek ve modüler bir node editor uygulamasıdır. Amacı, veri akışı, görsel programlama ve özelleştirilebilir işlem zincirleri oluşturmak isteyen geliştiriciler için başlangıç düzeyinde bir altyapı ve örnek kodlar sağlamaktır. 
 Bu proje, PyQt tabanlı esnek ve modüler bir node editor uygulamasıdır. Amacı, veri akışı, görsel programlama ve özelleştirilebilir işlem zincirleri oluşturmak isteyen geliştiriciler için güçlü bir altyapı sağlamaktır.
-
+![image](https://github.com/msn560/py-node-editor/blob/main/document/screenshots/cv2_1.png)
 #  Özellikler
 Modüler Node Yapısı:
 Tüm özel node’lar, temel Node sınıfından türetilerek; giriş/çıkış soketleri, veri akışı, değerlendirme mekanizması ve grafiksel öğeler gibi ortak özellikleri otomatik olarak kullanır.
