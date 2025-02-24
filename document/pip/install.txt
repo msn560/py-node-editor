@@ -1,0 +1,18 @@
+> python -m venv virtual  
+> virtual\Scripts\activate
+> python -m pip install --upgrade pip
+> pip install pyqt5
+> pip install qtpy 
+> pip install validators
+> pip install PyQtWebEngine 
+> pip install aiohttp 
+> pip install PySocks
+> pip install requests[socks]
+> pip install websocket-client requests
+> pip install beautifulsoup4 lxml
+> pip install opencv-python
+> pip install PyAutoGUI
+
+
+# Node Editor :
+> pip install document/archive/nodeeditor/pyqt-node-editor-master.zip

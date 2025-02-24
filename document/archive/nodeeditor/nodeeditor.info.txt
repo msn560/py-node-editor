@@ -1,0 +1,11 @@
+
+THANKS FOR CODE:
+
+    https://gitlab.com/pavel.krupala/pyqt-node-editor
+
+    https://www.youtube.com/watch?v=CX7ox9v4tpc
+
+    pip install /path/to/your_package.zip
+
+
+    pip install document/archive/nodeeditor/pyqt-node-editor-master.zip
