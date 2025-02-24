@@ -18,14 +18,11 @@ QThread üzerinde çalışan senkron bir HTTP sunucusudur. Diğer node’lardan 
 Esneklik ve Genişletilebilirlik:
 Proje, node’lar arasında veri akışını dict, byte, list, str gibi farklı veri tipleriyle yönetmeye olanak tanır. Ayrıca, farklı işlevler için router node gibi eklentiler oluşturulabilir.
 
-#  Kullanım
+ Kullanım
 Node Geliştirme:
 Kendi node’larınızı oluşturmak için Node sınıfını temel alarak; soket ekleme, eval (değerlendirme) ve veri gönderme metotlarını özelleştirebilirsiniz.
-
-#  HTTP API Entegrasyonu:
-HTTP Server Node sayesinde, uygulama içerisindeki verileri yerel sunucu üzerinden API olarak sunabilir; örneğin, ekran görüntülerini opencv ve pyautogui ile alıp PNG formatında dışarı aktarabilirsiniz.
-
- # Prototip ve Geliştirme:
+ 
+  Prototip ve Geliştirme:
 Hızlı prototipleme ve görsel programlama deneyimi için tasarlanmış olan bu yapı, kullanıcı dostu arayüzü ve modüler mimarisi sayesinde genişletilebilir.
 
 ```python
@@ -91,10 +88,29 @@ class InputNode(Node): # src/node_editor/node.py Node sınıfından türeyen Dü
         text = self.content.edit.text()   
         self.sendData("Çıkış",text) #verileri sonraki bağlı node gönder
  ```
+# Bağımlılıklar:
 
-# Diğer bağımlılıklar:
-nodeeditor, ilgili içerik ve grafik sınıfları 
-Kurulum için gereken bağımlılıklar ```document/pip/install.txt``` dosyasına göz atın.
+```bash
+pip install pyqt5
+pip install qtpy 
+pip install validators
+pip install PyQtWebEngine 
+pip install aiohttp 
+pip install PySocks
+pip install requests[socks]
+pip install websocket-client requests
+pip install beautifulsoup4 lxml
+pip install opencv-python
+pip install PyAutoGUI
+
+
+# Node Editor  https://gitlab.com/pavel.krupala/pyqt-node-editor :
+> pip install document/archive/nodeeditor/pyqt-node-editor-master.zip
+$ pip install git+https://gitlab.com/pavel.krupala/pyqt-node-editor.git
+
+ ```
+ 
+Kurulum için gereken bağımlılıklar ```document/pip/``` dosyasına göz atın.
 
 ## Thanks :
  
